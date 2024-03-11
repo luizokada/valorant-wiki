@@ -7,7 +7,6 @@ export default createGlobalStyle`
     font-family: 'VALORANT', sans-serif;
     font-weight: 500;
     box-sizing: border-box;
-    overflow: hidden;
   }
 
   main{
@@ -16,15 +15,8 @@ export default createGlobalStyle`
     min-height: 100vh;
     align-items: center;
     flex-direction: column;
-    padding-top: 120px;
-    padding-left: 288px;
-    padding-right: 48px;
     overflow: hidden;
-
-    @media (max-width: 768px) {
-      padding: 16px;
-      padding-top: 80px;
-  }
+    width: 100vw;
   }
 
   body{

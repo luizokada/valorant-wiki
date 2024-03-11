@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Container, PageButton, PagesSelector, SocialSection } from './styles';
 import Logo from '../../assets/valorant-logo.svg';
-import GitICon from '../../assets/gitIcon.png';
+import GitICon from '../../assets/github-mark-white.svg';
 import Icon from '../Icon';
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -30,7 +30,7 @@ const NavBar: React.FC = () => {
   return (
     <Container>
       <div>
-        <Icon svg={Logo} size={30} />
+        <Icon svg={Logo} size={30} onClick={() => navigate('/')} />
         <PagesSelector left={barPosition.left} width={barPosition.width}>
           <PageButton
             isSelected={pathname === '/'}
@@ -47,11 +47,25 @@ const NavBar: React.FC = () => {
             <p>Agents</p>
           </PageButton>
           <PageButton
-            isSelected={pathname === '/guns'}
-            onClick={() => navigate('/guns')}
-            ref={pathname === '/guns' ? selectedPageRef : null}
+            isSelected={pathname === '/weapons'}
+            onClick={() => navigate('/weapons')}
+            ref={pathname === '/weapons' ? selectedPageRef : null}
           >
-            <p>Guns</p>
+            <p>Weapons</p>
+          </PageButton>
+          <PageButton
+            isSelected={pathname === '/maps'}
+            onClick={() => navigate('/maps')}
+            ref={pathname === '/maps' ? selectedPageRef : null}
+          >
+            <p>Maps</p>
+          </PageButton>
+          <PageButton
+            isSelected={pathname === '/sprays'}
+            onClick={() => navigate('/sprays')}
+            ref={pathname === '/sprays' ? selectedPageRef : null}
+          >
+            <p>sprays</p>
           </PageButton>
         </PagesSelector>
       </div>

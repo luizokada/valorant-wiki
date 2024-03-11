@@ -1,16 +1,19 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import NavBar from './common/NavBar';
+import Agents from './pages/Agents';
 import Error from './pages/Error';
+import Guns from './pages/Guns';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
-import NavBar from './common/NavBar';
-import Guns from './pages/Guns';
-import Agents from './pages/Agents';
+import Maps from './pages/Maps';
+import Sprays from './pages/Sprays';
 
 type RouteArrayProps = {
   path: string;
   component: React.FC;
   private: boolean;
+  hideNavBar?: boolean;
 };
 
 const RoutesArray: RouteArrayProps[] = [
@@ -20,7 +23,7 @@ const RoutesArray: RouteArrayProps[] = [
     private: false,
   },
   {
-    path: '/guns',
+    path: '/weapons',
     component: Guns,
     private: false,
   },
@@ -30,8 +33,26 @@ const RoutesArray: RouteArrayProps[] = [
     private: false,
   },
   {
+    path: '/maps',
+    component: Maps,
+    private: false,
+  },
+  {
+    path: '/sprays',
+    component: Sprays,
+    private: false,
+  },
+  {
+    path: '/not-found',
+    component: NotFound,
+    private: false,
+    hideNavBar: true,
+  },
+
+  {
     path: '/error',
     component: Error,
+    hideNavBar: true,
     private: false,
   },
 ];
@@ -47,7 +68,7 @@ const AppRoutes: React.FC = () => {
               path={route.path}
               element={
                 <>
-                  <NavBar />
+                  {!route.hideNavBar && <NavBar />}
                   <route.component />
                 </>
               }
@@ -55,7 +76,7 @@ const AppRoutes: React.FC = () => {
             />
           );
         })}
-        <Route path="*" element={<NotFound />} />
+        <Route path="*" element={<Navigate to="/not-found" />} />
       </Routes>
     </BrowserRouter>
   );
