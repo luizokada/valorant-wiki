@@ -3,6 +3,9 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Error from './pages/Error';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
+import NavBar from './common/NavBar';
+import Guns from './pages/Guns';
+import Agents from './pages/Agents';
 
 type RouteArrayProps = {
   path: string;
@@ -14,6 +17,16 @@ const RoutesArray: RouteArrayProps[] = [
   {
     path: '/',
     component: Home,
+    private: false,
+  },
+  {
+    path: '/guns',
+    component: Guns,
+    private: false,
+  },
+  {
+    path: '/agents',
+    component: Agents,
     private: false,
   },
   {
@@ -32,7 +45,12 @@ const AppRoutes: React.FC = () => {
             <Route
               key={index}
               path={route.path}
-              element={<route.component />}
+              element={
+                <>
+                  <NavBar />
+                  <route.component />
+                </>
+              }
               errorElement={<Error />}
             />
           );

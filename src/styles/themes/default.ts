@@ -3,6 +3,7 @@ export default {
 
   Colors: {
     Gray: {
+      _000: '#FFFFFF',
       _100: '#FFFBF5',
       _200: '#ece8e1',
       _300: '#E9ECEF',
@@ -15,6 +16,7 @@ export default {
       _1000: '#000000',
     },
     Red: {
+      _000: '#FFF5F5',
       _100: '#FFF5F5',
       _200: '#FFE3E3',
       _300: '#FFC9C9',
@@ -27,6 +29,7 @@ export default {
       _1000: '#53212B',
     },
     Indigo: {
+      _000: '#EDF2FF',
       _100: '#EDF2FF',
       _200: '#DBE4FF',
       _300: '#BAC8FF',
@@ -39,6 +42,7 @@ export default {
       _1000: '#1864AB',
     },
     Blue: {
+      _000: '#E7F5FF',
       _100: '#E7F5FF',
       _200: '#D0EBFF',
       _300: '#A5D8FF',
@@ -51,6 +55,7 @@ export default {
       _1000: '#1864AB',
     },
     Green: {
+      _000: '#EBFBEE',
       _100: '#EBFBEE',
       _200: '#D3F9D8',
       _300: '#B2F2BB',
@@ -63,6 +68,7 @@ export default {
       _1000: '#2B8A3E',
     },
     Yellow: {
+      _000: '#FFF9DB',
       _100: '#FFF9DB',
       _200: '#FFF3BF',
       _300: '#FFF3BF',
@@ -75,6 +81,7 @@ export default {
       _1000: '#E67700',
     },
     Slate: {
+      _000: '#F1F5F9',
       _100: '#F1F5F9',
       _200: '#F1F5F9',
     },

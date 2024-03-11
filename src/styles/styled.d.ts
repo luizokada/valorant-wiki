@@ -6,6 +6,7 @@ declare module 'styled-components' {
 
     Colors: {
       Gray: {
+        _000: string;
         _100: string;
         _200: string;
         _300: string;
@@ -18,6 +19,7 @@ declare module 'styled-components' {
         _1000: string;
       };
       Red: {
+        _000: string;
         _100: string;
         _200: string;
         _300: string;
@@ -30,6 +32,7 @@ declare module 'styled-components' {
         _1000: string;
       };
       Indigo: {
+        _000: string;
         _100: string;
         _200: string;
         _300: string;
@@ -42,6 +45,7 @@ declare module 'styled-components' {
         _1000: string;
       };
       Blue: {
+        _000: string;
         _100: string;
         _200: string;
         _300: string;
@@ -54,6 +58,7 @@ declare module 'styled-components' {
         _1000: string;
       };
       Green: {
+        _000: string;
         _100: string;
         _200: string;
         _300: string;
@@ -66,6 +71,7 @@ declare module 'styled-components' {
         _1000: string;
       };
       Yellow: {
+        _000: string;
         _100: string;
         _200: string;
         _300: string;
@@ -78,6 +84,7 @@ declare module 'styled-components' {
         _1000: string;
       };
       Slate: {
+        _000: string;
         _100: string;
         _200: string;
       };
