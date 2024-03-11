@@ -4,7 +4,7 @@ export default createGlobalStyle`
   * {
     margin: 0;
     padding: 0;
-    font-family: 'Inter', sans-serif;
+    font-family: 'VALORANT', sans-serif;
     font-weight: 500;
     box-sizing: border-box;
     overflow: hidden;
