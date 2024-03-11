@@ -14,7 +14,7 @@ const NotFound: React.FC = () => {
         <div className="top-left-image">
           <img src={ConfusedSage} />
         </div>
-        <h1>Ops!</h1>
+        <h1>404</h1>
         <p>Page not found!</p>
         <FillButtom
           onClick={() => {
