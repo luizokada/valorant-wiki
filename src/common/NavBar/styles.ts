@@ -3,11 +3,13 @@ import styled from 'styled-components';
 export const Container = styled.div`
   width: 100vw;
   height: 60px;
-
+  position: sticky;
+  top: 0;
   background-color: ${({ theme }) => theme.Colors.Gray._1000};
   display: flex;
   align-items: center;
   justify-content: space-between;
+  z-index: 10;
   > div {
     display: flex;
     align-items: center;
