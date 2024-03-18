@@ -90,6 +90,7 @@ const AgentsPage: React.FC = () => {
     <Container ref={containerRef}>
       {shouldRenderCarousel && (
         <AgentsCarrousel
+          setSelectedIndex={setSelectedIndex}
           {...corouselProps}
           agents={agents}
           selectedIndex={selectedIndex}

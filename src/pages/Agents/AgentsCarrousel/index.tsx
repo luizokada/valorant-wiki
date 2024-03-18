@@ -13,6 +13,7 @@ interface AgentsCarrouselProps {
   leftImages: number;
   gap: number;
   componentWidth: number;
+  setSelectedIndex: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const AgentsCarrousel: React.FC<AgentsCarrouselProps> = ({
@@ -24,6 +25,7 @@ const AgentsCarrousel: React.FC<AgentsCarrouselProps> = ({
   gap,
   selectedIndex,
   componentWidth,
+  setSelectedIndex,
 }) => {
   const imagesStyles = useMemo(() => {
     // Mutiplier to adjust the size and positions of the images
@@ -147,6 +149,7 @@ const AgentsCarrousel: React.FC<AgentsCarrouselProps> = ({
                 onClick={(e) => {
                   e.stopPropagation();
                   if (imagesStyles[index].class === 'none') return;
+                  setSelectedIndex(index);
                 }}
                 right={imagesStyles[index].right}
                 className={imagesStyles[index].class}
