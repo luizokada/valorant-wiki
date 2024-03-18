@@ -2,9 +2,7 @@ import axios from 'axios';
 import React from 'react';
 
 const ValorantAPI = axios.create({
-  baseURL: `${import.meta.env.VITE_API_URL}/${
-    import.meta.env.VITE_API_VERSION
-  }`,
+  baseURL: `https://valorant-api.com/v1`,
 });
 
 interface AxiosService {
