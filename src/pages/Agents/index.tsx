@@ -15,7 +15,7 @@ type CarrouselProps = {
   componentWidth: number;
 };
 // import { Container } from './styles';
-const WIDTHCARD = 400;
+const WIDTHCARD = 350;
 const GAP = 20;
 const HEIGHTCARD = 400;
 const RIGHTIMAGES = 3;
