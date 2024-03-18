@@ -43,7 +43,7 @@ const Home: React.FC = () => {
       </WelcomeSection>
       <AboutSection id="about-section">
         <div className="title">
-          <h1>Avaible contents on this wiki</h1>
+          <h1>Available contents on this wiki</h1>
         </div>
         <InfoCards />
       </AboutSection>

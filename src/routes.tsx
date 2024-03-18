@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import NavBar from './common/NavBar';
-import Agents from './pages/Agents';
+import AgentsPage from './pages/Agents';
 import Error from './pages/Error';
 import Guns from './pages/Guns';
 import Home from './pages/Home';
-import NotFound from './pages/NotFound';
 import Maps from './pages/Maps';
+import NotFound from './pages/NotFound';
 import Sprays from './pages/Sprays';
 
 type RouteArrayProps = {
@@ -29,7 +29,7 @@ const RoutesArray: RouteArrayProps[] = [
   },
   {
     path: '/agents',
-    component: Agents,
+    component: AgentsPage,
     private: false,
   },
   {
