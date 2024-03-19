@@ -135,7 +135,7 @@ const AgentsCarrousel: React.FC<AgentsCarrouselProps> = ({
         <ListWrapper
           style={{
             width: `${componentWidth}px`,
-            height: `${imageHeight}px`,
+            height: `${imageHeight * 1.3}px`,
           }}
         >
           {agents.map((agent, index) => {
