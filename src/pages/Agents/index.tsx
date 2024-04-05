@@ -49,6 +49,7 @@ const AgentsPage: React.FC = () => {
 
   const agents = useMemo(() => {
     if (agentsData) {
+      setSelectedIndex(agentsData.data.length);
       return agentsData.data.sort((a, b) =>
         a.displayName.localeCompare(b.displayName),
       );
@@ -101,11 +102,41 @@ const AgentsPage: React.FC = () => {
           style={{ width: `${corouselProps.componentWidth}px` }}
         >
           {agents.map((agent, index) => (
-            <AgentIcon isSelected={selectedIndex === index} key={agent.uuid}>
+            <AgentIcon
+              isSelected={
+                selectedIndex === index + agents.length ||
+                selectedIndex === index ||
+                selectedIndex === index + agents.length * 2
+              }
+              key={agent.uuid}
+            >
               <img
                 src={agent.displayIcon}
                 alt={agent.displayName}
-                onClick={() => setSelectedIndex(index)}
+                onClick={() => {
+                  console.log(index + agents.length);
+                  setSelectedIndex((prev) => {
+                    const newIndex = index + agents.length;
+                    const nextRight = index + agents.length * 2;
+                    const prevLeft = index;
+                    const distanceRight = Math.abs(newIndex - prev);
+                    const distanceLeft = Math.abs(prevLeft - prev);
+                    const distanceNextRight = Math.abs(nextRight - prev);
+                    if (
+                      distanceRight < distanceLeft &&
+                      distanceRight < distanceNextRight
+                    ) {
+                      return newIndex;
+                    } else if (
+                      distanceLeft < distanceRight &&
+                      distanceLeft < distanceNextRight
+                    ) {
+                      return prevLeft;
+                    } else {
+                      return nextRight;
+                    }
+                  });
+                }}
               />
               <div className="tag">
                 <p>S</p>

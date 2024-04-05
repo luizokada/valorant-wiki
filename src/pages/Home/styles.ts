@@ -10,14 +10,12 @@ export const HomeContainer = styled.div`
   overflow-y: scroll;
   align-items: center;
   background-color: ${({ theme }) => theme.Colors.Gray._000};
-
+  overflow-x: hidden;
   ::-webkit-scrollbar {
-    display: none;
-    width: 0;
+    width: 5px;
   }
   ::-webkit-scrollbar-thumb {
-    display: none;
-    width: 0;
+    background: rgb(250, 82, 82);
   }
 `;
 
