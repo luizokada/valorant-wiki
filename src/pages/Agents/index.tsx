@@ -87,6 +87,23 @@ const AgentsPage: React.FC = () => {
       observer.disconnect();
     };
   }, [containerRef]);
+
+  useEffect(() => {
+    const timeRef = setTimeout(() => {
+      setSelectedIndex((prev) => {
+        const newIndex = prev + 1;
+
+        if (newIndex >= agents.length * 3) {
+          return agents.length;
+        }
+
+        return newIndex;
+      });
+    }, 1500);
+    return () => {
+      clearTimeout(timeRef);
+    };
+  }, [agents.length, selectedIndex]);
   return (
     <Container ref={containerRef}>
       {shouldRenderCarousel && (
@@ -129,11 +146,18 @@ const AgentsPage: React.FC = () => {
                       return newIndex;
                     } else if (
                       distanceLeft < distanceRight &&
-                      distanceLeft < distanceNextRight
+                      distanceLeft < distanceNextRight &&
+                      prevLeft >= agents.length / 2
                     ) {
                       return prevLeft;
-                    } else {
+                    } else if (
+                      distanceNextRight < distanceRight &&
+                      distanceNextRight < distanceLeft &&
+                      nextRight <= agents.length * 2 + agents.length / 2
+                    ) {
                       return nextRight;
+                    } else {
+                      return newIndex;
                     }
                   });
                 }}

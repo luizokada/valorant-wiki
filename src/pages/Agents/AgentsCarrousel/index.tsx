@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useCallback, useEffect, useMemo } from 'react';
 import { Agents } from '../../../api-types/agents';
 import { ImageWrapper, ListWrapper } from './styles';
 
@@ -19,7 +19,7 @@ interface AgentsCarrouselProps {
 const AgentsCarrousel: React.FC<AgentsCarrouselProps> = ({
   agents,
   gap,
-
+  imageHeight,
   imageWidth,
   selectedIndex,
 
@@ -34,38 +34,59 @@ const AgentsCarrousel: React.FC<AgentsCarrouselProps> = ({
     return [...circularAgents, ...circularAgents, ...circularAgents];
   }, [agents]);
 
+  const getCenterImageScrollPostion = useCallback(
+    (index: number) => {
+      if (currentImageRef.current && listParentRef.current) {
+        const constainerWidth = listParentRef.current.clientWidth;
+        const imageCenter = (imageWidth + gap) * index + imageWidth / 2;
+        const scrollCenter = constainerWidth / 2;
+        const scrollLeft = imageCenter - scrollCenter;
+        return scrollLeft;
+      }
+    },
+    [imageWidth, gap],
+  );
   useEffect(() => {
-    console.log('selectedIndex', gap);
+    console.log('selectedIndex', selectedIndex);
     if (currentImageRef.current && listParentRef.current) {
-      const constainerWidth = listParentRef.current.clientWidth;
-      const imageCenter = (imageWidth + gap) * selectedIndex + imageWidth / 2;
-      const scrollCenter = constainerWidth / 2;
-      const scrollLeft = imageCenter - scrollCenter;
+      const scrollLeft = getCenterImageScrollPostion(selectedIndex);
 
       if (listParentRef.current) {
         listParentRef.current.scrollTo({
           left: scrollLeft,
           behavior: 'smooth',
         });
-        if (
-          selectedIndex >= agents.length * 2 ||
-          selectedIndex < agents.length
-        ) {
-          const overFlow =
-            selectedIndex >= agents.length * 2
-              ? selectedIndex - agents.length * 2 + 1
-              : 2;
-          const timerRef = setTimeout(() => {
+      }
+    }
+  }, [
+    imageWidth,
+    selectedIndex,
+    setSelectedIndex,
+    getCenterImageScrollPostion,
+  ]);
+
+  return (
+    <>
+      <ListWrapper
+        ref={listParentRef}
+        style={{
+          minHeight: `${imageHeight * 1.3}px`,
+        }}
+        onScroll={(e) => {
+          const currentScroll = e.currentTarget.scrollLeft;
+
+          if (
+            (selectedIndex >= agents.length * 2 ||
+              selectedIndex < agents.length) &&
+            currentScroll ===
+              Math.floor(getCenterImageScrollPostion(selectedIndex) || 0)
+          ) {
             if (listParentRef.current) {
               const newIndex =
                 selectedIndex >= agents.length * 2
                   ? selectedIndex - agents.length
                   : selectedIndex + agents.length;
-              const constainerWidth = listParentRef.current.clientWidth;
-              const imageCenter =
-                (imageWidth + gap) * newIndex + imageWidth / 2;
-              const scrollCenter = constainerWidth / 2;
-              const scrollLeft = imageCenter - scrollCenter;
+              const scrollLeft = getCenterImageScrollPostion(newIndex);
 
               if (listParentRef.current) {
                 listParentRef.current.scrollTo({
@@ -75,21 +96,23 @@ const AgentsCarrousel: React.FC<AgentsCarrouselProps> = ({
                 setSelectedIndex(newIndex);
               }
             }
-          }, Math.min(overFlow * 200, 3000));
-          return () => clearTimeout(timerRef);
-        }
-      }
-    }
-  }, [imageWidth, selectedIndex, gap, agents.length, setSelectedIndex]);
-
-  return (
-    <>
-      <ListWrapper ref={listParentRef}>
+          }
+          return;
+        }}
+      >
         {circularAgents.map((agent, index) => {
           return (
             <ImageWrapper
               key={index}
               ref={index === selectedIndex ? currentImageRef : null}
+              style={{
+                transform:
+                  selectedIndex === index + agents.length ||
+                  selectedIndex === index ||
+                  selectedIndex === index + agents.length * 2
+                    ? `scale(1.3)`
+                    : 'scale(1)',
+              }}
               onClick={(e) => {
                 e.stopPropagation();
                 setSelectedIndex(index);

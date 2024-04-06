@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 export const Container = styled.div`
   display: flex;
   height: calc(100vh - 60px);
-  padding-top: 70px;
+  padding-top: 16px;
   gap: 32px;
   width: 100%;
   overflow-x: hidden;
@@ -35,6 +35,7 @@ export const AgentIcon = styled.div<AgentIconProps>`
   height: 100px;
   position: relative;
   background-color: ${({ theme }) => theme.Colors.Gray._000};
+  user-select: none;
   .tag {
     display: none;
 
