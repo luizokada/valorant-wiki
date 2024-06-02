@@ -82,3 +82,16 @@ export const AgentIcon = styled.div<AgentIconProps>`
     z-index: 2;
   }
 `;
+
+export const AgentHabilitysContainer = styled.div`
+  border: 1px solid ${({ theme }) => theme.Colors.Gray._300};
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  > h1 {
+    font-size: 24px;
+    font-weight: 500;
+    color: ${({ theme }) => theme.Colors.Gray._1000};
+  }
+`;

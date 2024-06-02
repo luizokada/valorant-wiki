@@ -4,6 +4,8 @@ import { useFetch } from '../../hooks/useFecth';
 import { ValorantAPI } from '../../service';
 import AgentsCarrousel from './AgentsCarrousel';
 import { AgentIcon, AgentsIconsWrapper, Container } from './styles';
+import AgentInfo from './AgentInfo';
+import Footer from '../../common/Footer';
 
 type CarrouselProps = {
   imageWidth: number;
@@ -88,7 +90,7 @@ const AgentsPage: React.FC = () => {
     };
   }, [containerRef]);
 
-  useEffect(() => {
+  /*  useEffect(() => {
     const timeRef = setTimeout(() => {
       setSelectedIndex((prev) => {
         const newIndex = prev + 1;
@@ -99,11 +101,11 @@ const AgentsPage: React.FC = () => {
 
         return newIndex;
       });
-    }, 1500);
+    }, 3000);
     return () => {
       clearTimeout(timeRef);
     };
-  }, [agents.length, selectedIndex]);
+  }, [agents.length, selectedIndex]);*/
   return (
     <Container ref={containerRef}>
       {shouldRenderCarousel && (
@@ -169,6 +171,9 @@ const AgentsPage: React.FC = () => {
           ))}
         </AgentsIconsWrapper>
       )}
+      <AgentInfo agent={agents[selectedIndex % agents.length]} />
+
+      <Footer />
     </Container>
   );
 };
